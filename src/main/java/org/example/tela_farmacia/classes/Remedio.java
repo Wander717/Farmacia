@@ -15,6 +15,18 @@ public class Remedio {
         this.id = id;
     }
 
+    public void setNome (String nome) {
+        this.nome = nome;
+    }
+
+    public void  setTipo (String tipo) {
+        this.tipo = tipo;
+    }
+
+    public void setQuantidade(int quantidade) {
+        this.quantidade = quantidade;
+    }
+
     //GETTERS
     public String getNome() {
         return nome;

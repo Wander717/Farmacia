@@ -6,9 +6,11 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.TextFieldTableCell;
 import org.example.tela_farmacia.DatabaseConnection;
 import org.example.tela_farmacia.classes.*;
 import org.example.tela_farmacia.DAOs.RegistroDAO;
+import javafx.util.converter.IntegerStringConverter;
 
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -51,6 +53,10 @@ public class RegistrosController {
 
     @FXML
     public void initialize() {
+
+        tabela_Registros.setEditable(false);
+        tabela_Registros.getSelectionModel().setCellSelectionEnabled(true);
+
         // Agora a tabela se prepara sozinha ao abrir
         configurarColunas();
         carregarDados();
@@ -118,12 +124,36 @@ public class RegistrosController {
 
     @FXML
     private void editarLinhaSelecionada() {
-        Registro selecionado = tabela_Registros.getSelectionModel().getSelectedItem();
+
+        Registro selecionado =
+                tabela_Registros.getSelectionModel()
+                        .getSelectedItem();
+
         if (selecionado != null) {
-            // Lógica para abrir tela de edição ou preencher campos
-            System.out.println("Editando registro ID: " + selecionado.getId());
+
+            tabela_Registros.setEditable(true);
+
+            editar();
+
+            TablePosition<Registro, ?> posicao =
+                    tabela_Registros.getFocusModel()
+                            .getFocusedCell();
+
+            if (posicao.getTableColumn() != null) {
+
+                tabela_Registros.edit(
+                        posicao.getRow(),
+                        posicao.getTableColumn()
+                );
+            }
+
         } else {
-            mostrarAlerta("Aviso", "Selecione um registro para editar!", Alert.AlertType.WARNING);
+
+            mostrarAlerta(
+                    "Aviso",
+                    "Selecione um registro para editar!",
+                    Alert.AlertType.WARNING
+            );
         }
     }
 
@@ -146,5 +176,38 @@ public class RegistrosController {
         alert.setHeaderText(null);
         alert.setContentText(msg);
         alert.showAndWait();
+    }
+
+    private void editar() {
+        col_NomeCliente.setCellFactory(TextFieldTableCell.forTableColumn());
+        col_NomeCliente.setOnEditCommit(event -> {
+            Registro registro = event.getRowValue();
+            registro.getCliente().setNome(event.getNewValue());
+        });
+        col_IdadeCliente.setCellFactory(TextFieldTableCell.forTableColumn(new IntegerStringConverter()));
+        col_IdadeCliente.setOnEditCommit(event -> {
+            Registro registro = event.getRowValue();
+            registro.getCliente().setIdade(event.getNewValue());
+        });
+        col_NomeRemedio.setCellFactory(TextFieldTableCell.forTableColumn());
+        col_NomeRemedio.setOnEditCommit( event -> {
+            Registro registro = event.getRowValue();
+            registro.getRemedio().setNome(event.getNewValue());
+        });
+        col_TipoRemedio.setCellFactory(TextFieldTableCell.forTableColumn());
+        col_TipoRemedio.setOnEditCommit( event -> {
+            Registro registro = event.getRowValue();
+            registro.getRemedio().setTipo(event.getNewValue());
+        });
+        col_QuantRemedio.setCellFactory(TextFieldTableCell.forTableColumn(new IntegerStringConverter()));
+        col_QuantRemedio.setOnEditCommit(event -> {
+            Registro registro = event.getRowValue();
+            registro.getRemedio().setQuantidade(event.getNewValue());
+        });
+        col_NomeFuncionario.setCellFactory(TextFieldTableCell.forTableColumn());
+        col_NomeFuncionario.setOnEditCommit(event -> {
+            Registro registro = event.getRowValue();
+            registro.getFuncionario().setNome(event.getNewValue());
+        });
     }
 }

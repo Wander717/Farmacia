@@ -12,6 +12,13 @@ public class Cliente {
         this.id = id;
     }
 
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+    public void setIdade (int idade) {
+        this.idade = idade;
+    }
+
     //GETTERS
     public String getNome() {
         return nome;
