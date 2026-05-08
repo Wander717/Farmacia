@@ -3,12 +3,12 @@ package org.example.tela_farmacia.classes;
 public class Remedio {
     private String nome;
     private String tipo;
-    private int quantidade;
+    private Integer quantidade;
     private int id;
 
 
     //CONSTRUTOR
-    public Remedio (String nome, String tipo, int quantidade, int id) {
+    public Remedio (String nome, String tipo, Integer quantidade, int id) {
         this.nome = nome;
         this.tipo = tipo;
         this.quantidade = quantidade;
@@ -23,7 +23,7 @@ public class Remedio {
         this.tipo = tipo;
     }
 
-    public void setQuantidade(int quantidade) {
+    public void setQuantidade(Integer quantidade) {
         this.quantidade = quantidade;
     }
 
@@ -34,7 +34,7 @@ public class Remedio {
     public String getTipo() {
         return tipo;
     }
-    public int getQuantidade() {
+    public Integer getQuantidade() {
         return quantidade;
     }
     public int getId() {return id;}

@@ -96,6 +96,89 @@ public class RegistroDAO {
         return lista;
     }
 
+    //MÉTODOS DE ATUALIZAÇÃO
+
+    public void atualizarCliente(Cliente cliente)
+            throws SQLException {
+
+        String sql = """
+        UPDATE cliente
+        SET nome_cliente = ?,
+            idade_cliente = ?
+        WHERE id_cliente = ?
+    """;
+
+        try (PreparedStatement stmt =
+                     conexao.prepareStatement(sql)) {
+
+            stmt.setString(1, cliente.getNome());
+
+            stmt.setInt(2, cliente.getIdade());
+
+            stmt.setInt(3, cliente.getId());
+
+            stmt.executeUpdate();
+        }
+    }
+
+    public void atualizarFuncionario(
+            Funcionario funcionario
+    ) throws SQLException {
+
+        String sql = """
+        UPDATE funcionario
+        SET nome_funcionario = ?,
+            cargo_funcionario = ?
+        WHERE id_funcionario = ?
+    """;
+
+        try (PreparedStatement stmt =
+                     conexao.prepareStatement(sql)) {
+
+            stmt.setString(1,
+                    funcionario.getNome());
+
+            stmt.setString(2,
+                    funcionario.getCargo());
+
+            stmt.setInt(3,
+                    funcionario.getId());
+
+            stmt.executeUpdate();
+        }
+    }
+
+    public void atualizarRemedio(
+            Remedio remedio
+    ) throws SQLException {
+
+        String sql = """
+        UPDATE remedio
+        SET nome_remedio = ?,
+            tipo_remedio = ?,
+            quantidade_remedio = ?
+        WHERE id_remedio = ?
+    """;
+
+        try (PreparedStatement stmt =
+                     conexao.prepareStatement(sql)) {
+
+            stmt.setString(1,
+                    remedio.getNome());
+
+            stmt.setString(2,
+                    remedio.getTipo());
+
+            stmt.setInt(3,
+                    remedio.getQuantidade());
+
+            stmt.setInt(4,
+                    remedio.getId());
+
+            stmt.executeUpdate();
+        }
+    }
+
     public void deletar(int idRegistro) throws SQLException {
         String sql = "DELETE FROM registros WHERE id_registro = ?";
         try (PreparedStatement stmt = conexao.prepareStatement(sql)) {

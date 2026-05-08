@@ -2,11 +2,11 @@ package org.example.tela_farmacia.classes;
 
 public class Cliente {
     private String nome;
-    private int idade;
+    private Integer idade;
     private int id;
 
     //CONSTRUTOR
-    public Cliente (String nome, int quantidade, int id) {
+    public Cliente (String nome, Integer idade, int id) {
         this.nome = nome;
         this.idade = idade;
         this.id = id;
@@ -15,7 +15,7 @@ public class Cliente {
     public void setNome(String nome) {
         this.nome = nome;
     }
-    public void setIdade (int idade) {
+    public void setIdade (Integer idade) {
         this.idade = idade;
     }
 
@@ -24,7 +24,7 @@ public class Cliente {
         return nome;
     }
 
-    public int getIdade() {
+    public Integer getIdade() {
         return idade;
     }
 

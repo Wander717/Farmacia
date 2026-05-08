@@ -183,31 +183,117 @@ public class RegistrosController {
         col_NomeCliente.setOnEditCommit(event -> {
             Registro registro = event.getRowValue();
             registro.getCliente().setNome(event.getNewValue());
+
+            try (Connection conexao =
+                         DatabaseConnection.getConnection()) {
+
+                RegistroDAO dao =
+                        new RegistroDAO(conexao);
+
+                dao.atualizarCliente(
+                        registro.getCliente()
+                );
+
+            } catch (SQLException e) {
+
+                e.printStackTrace();
+            }
         });
+
         col_IdadeCliente.setCellFactory(TextFieldTableCell.forTableColumn(new IntegerStringConverter()));
         col_IdadeCliente.setOnEditCommit(event -> {
             Registro registro = event.getRowValue();
             registro.getCliente().setIdade(event.getNewValue());
+            try (Connection conexao =
+                         DatabaseConnection.getConnection()) {
+
+                RegistroDAO dao =
+                        new RegistroDAO(conexao);
+
+                dao.atualizarCliente(
+                        registro.getCliente()
+                );
+
+            } catch (SQLException e) {
+
+                e.printStackTrace();
+            }
         });
         col_NomeRemedio.setCellFactory(TextFieldTableCell.forTableColumn());
         col_NomeRemedio.setOnEditCommit( event -> {
             Registro registro = event.getRowValue();
             registro.getRemedio().setNome(event.getNewValue());
+            try (Connection conexao =
+                         DatabaseConnection.getConnection()) {
+
+                RegistroDAO dao =
+                        new RegistroDAO(conexao);
+
+                dao.atualizarRemedio(
+                        registro.getRemedio()
+                );
+
+            } catch (SQLException e) {
+
+                e.printStackTrace();
+            }
         });
         col_TipoRemedio.setCellFactory(TextFieldTableCell.forTableColumn());
         col_TipoRemedio.setOnEditCommit( event -> {
             Registro registro = event.getRowValue();
             registro.getRemedio().setTipo(event.getNewValue());
+            try (Connection conexao =
+                         DatabaseConnection.getConnection()) {
+
+                RegistroDAO dao =
+                        new RegistroDAO(conexao);
+
+                dao.atualizarRemedio(
+                        registro.getRemedio()
+                );
+
+            } catch (SQLException e) {
+
+                e.printStackTrace();
+            }
         });
         col_QuantRemedio.setCellFactory(TextFieldTableCell.forTableColumn(new IntegerStringConverter()));
         col_QuantRemedio.setOnEditCommit(event -> {
             Registro registro = event.getRowValue();
             registro.getRemedio().setQuantidade(event.getNewValue());
+            try (Connection conexao =
+                         DatabaseConnection.getConnection()) {
+
+                RegistroDAO dao =
+                        new RegistroDAO(conexao);
+
+                dao.atualizarRemedio(
+                        registro.getRemedio()
+                );
+
+            } catch (SQLException e) {
+
+                e.printStackTrace();
+            }
         });
         col_NomeFuncionario.setCellFactory(TextFieldTableCell.forTableColumn());
         col_NomeFuncionario.setOnEditCommit(event -> {
             Registro registro = event.getRowValue();
             registro.getFuncionario().setNome(event.getNewValue());
+            try (Connection conexao =
+                         DatabaseConnection.getConnection()) {
+
+                RegistroDAO dao =
+                        new RegistroDAO(conexao);
+
+                dao.atualizarFuncionario(
+                        registro.getFuncionario()
+                );
+
+            } catch (SQLException e) {
+
+                e.printStackTrace();
+            }
         });
     }
 }
