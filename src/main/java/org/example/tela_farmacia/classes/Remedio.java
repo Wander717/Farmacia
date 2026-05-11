@@ -15,6 +15,7 @@ public class Remedio {
         this.id = id;
     }
 
+    //SETTERS
     public void setNome (String nome) {
         this.nome = nome;
     }

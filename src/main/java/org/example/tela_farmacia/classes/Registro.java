@@ -7,29 +7,27 @@ public class Registro {
     private Funcionario funcionario;
     private Remedio remedio;
 
+    //CONSTRUTOR
     public Registro(Cliente cliente, Funcionario funcionario, Remedio remedio) {
         this.cliente = cliente;
         this.funcionario = funcionario;
         this.remedio = remedio;
     }
 
-    public Integer getId() {
-        return id;
-    }
-
+    //SETTER
     public void setId(Integer id) {
         this.id = id;
     }
 
-    public Cliente getCliente() {
-        return cliente;
+
+    //GETTERS
+    public Integer getId() {
+        return id;
     }
 
-    public Funcionario getFuncionario() {
-        return funcionario;
-    }
+    public Cliente getCliente() {return cliente;}
 
-    public Remedio getRemedio() {
-        return remedio;
-    }
+    public Funcionario getFuncionario() {return funcionario;}
+
+    public Remedio getRemedio() {return remedio;}
 }

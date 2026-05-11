@@ -45,11 +45,6 @@ public class RegistrosController {
     @FXML
     private Button btn_VoltarMenu;
 
-    @FXML
-    private Button btn_ExcluirSelecionado;
-
-    @FXML
-    private Button btn_EditarSelecionado;
 
     @FXML
     public void initialize() {
@@ -57,7 +52,6 @@ public class RegistrosController {
         tabela_Registros.setEditable(false);
         tabela_Registros.getSelectionModel().setCellSelectionEnabled(true);
 
-        // Agora a tabela se prepara sozinha ao abrir
         configurarColunas();
         carregarDados();
     }

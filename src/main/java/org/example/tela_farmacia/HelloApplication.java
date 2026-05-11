@@ -1,6 +1,5 @@
 package org.example.tela_farmacia;
 
-import atlantafx.base.theme.Dracula;
 import atlantafx.base.theme.PrimerLight;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -8,8 +7,6 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-
-import atlantafx.base.theme.PrimerDark;
 
 public class HelloApplication extends Application {
     @Override

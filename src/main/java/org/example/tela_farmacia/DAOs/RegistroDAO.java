@@ -36,7 +36,7 @@ public class RegistroDAO {
             this.conexao.commit();
         } catch (SQLException e) {
             if (this.conexao != null) this.conexao.rollback();
-            throw e; // REPASSA o erro para o Controller
+            throw e;
         } finally {
             if (this.conexao != null) this.conexao.setAutoCommit(true);
         }
@@ -179,6 +179,7 @@ public class RegistroDAO {
         }
     }
 
+    //MÉTODO DE EXCLUSÃO
     public void deletar(int idRegistro) throws SQLException {
         String sql = "DELETE FROM registros WHERE id_registro = ?";
         try (PreparedStatement stmt = conexao.prepareStatement(sql)) {
