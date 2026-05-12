@@ -48,7 +48,7 @@ public class RegistrosController {
 
     @FXML
     public void initialize() {
-
+        tabela_Registros.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY_FLEX_LAST_COLUMN);
         tabela_Registros.setEditable(false);
         tabela_Registros.getSelectionModel().setCellSelectionEnabled(true);
 
