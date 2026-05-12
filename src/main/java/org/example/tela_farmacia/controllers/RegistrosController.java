@@ -56,8 +56,8 @@ public class RegistrosController {
         carregarDados();
     }
 
+    //FAZ O POSICIONAMENTO DAS COLUNAS
     private void configurarColunas() {
-        // Mapeamento das colunas
         col_IdRegistro.setCellValueFactory(data -> new SimpleIntegerProperty(data.getValue().getId()).asObject());
 
         col_NomeCliente.setCellValueFactory(data ->
@@ -79,6 +79,7 @@ public class RegistrosController {
                 new SimpleStringProperty(data.getValue().getFuncionario().getNome()));
     }
 
+    //CARREGA OS DADOS PARA SEREM EXIBIDOS NA TABELA
     private void carregarDados() {
         try (Connection conexao = DatabaseConnection.getConnection()) {
             RegistroDAO dao = new RegistroDAO(conexao);
@@ -91,6 +92,7 @@ public class RegistrosController {
         }
     }
 
+    //MÉTODO QUE REALIZA A EXCLUSÃO DE UM REGISTRO
     @FXML
     private void excluirLinhaSelecionada() {
         Registro selecionado = tabela_Registros.getSelectionModel().getSelectedItem();
@@ -116,6 +118,7 @@ public class RegistrosController {
         }
     }
 
+    //MÉTODO QUE POSSIBILITA A EDIÇÃO DE UMA DETERMINADA LINHA EM UMA COLUNA
     @FXML
     private void editarLinhaSelecionada() {
 
@@ -151,6 +154,7 @@ public class RegistrosController {
         }
     }
 
+    //VOLTA PARA A TELA DE INSERIR NOVOS REGISTROS
     @FXML
     private void voltarMenu() {
         try {
@@ -163,7 +167,7 @@ public class RegistrosController {
         }
     }
 
-    // Método único para alertas, facilitando o código
+    //MÉTODO ÚNICO PARA EXIBIÇÃO DE ALERTAS
     private void mostrarAlerta(String titulo, String msg, Alert.AlertType tipo) {
         Alert alert = new Alert(tipo);
         alert.setTitle(titulo);
@@ -172,6 +176,8 @@ public class RegistrosController {
         alert.showAndWait();
     }
 
+
+    //MÉTODO QUE POSSIBILITA A EDIÇÃO DE INFORMAÇÕES JÁ ADICIONADAS AO BANCO DE DADOS
     private void editar() {
         col_NomeCliente.setCellFactory(TextFieldTableCell.forTableColumn());
         col_NomeCliente.setOnEditCommit(event -> {

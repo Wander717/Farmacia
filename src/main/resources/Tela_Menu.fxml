@@ -12,7 +12,7 @@
 
 <AnchorPane prefHeight="800.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.tela_farmacia.controllers.MenuController">
    <children>
-      <Label layoutX="180.0" layoutY="31.0" text="Menu farmácia" underline="true">
+      <Label alignment="CENTER" layoutX="180.0" layoutY="31.0" text="Menu farmácia" underline="true" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="31.0">
          <font>
             <Font name="System Bold" size="34.0" />
          </font>

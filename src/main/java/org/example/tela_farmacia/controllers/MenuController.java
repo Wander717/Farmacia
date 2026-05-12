@@ -34,6 +34,7 @@ public class MenuController {
         }
     }
 
+    //INSERE OS DADOS AO BANCO DE DADOS
     @FXML
     public void registrarTudo() {
         try {
@@ -59,7 +60,7 @@ public class MenuController {
             mostrarAlerta("Erro", e.getMessage(), Alert.AlertType.ERROR);
         }
     }
-
+    //VAI PARA A TABELA DE REGISTROS
     @FXML
     private void consultarTabela() {
         try {
@@ -71,7 +72,7 @@ public class MenuController {
             e.printStackTrace();
         }
     }
-
+    //MÉTODO DE LIMPAR OS CAMPOS PREENCHIDOS APÓS A INSERÇÃO DE UM REGISTRO
     private void limparCampos() {
         txt_NomeFuncionario.clear();
         txt_NomeRemedio.clear();
@@ -80,7 +81,7 @@ public class MenuController {
         txt_IdadeCliente.clear();
         spi_QuantRemedio.getValueFactory().setValue(1);
     }
-
+    //MÉTODO ÚNICO PARA EXIBIÇÃO DE ALERTAS
     private void mostrarAlerta(String titulo, String msg, Alert.AlertType tipo) {
         Alert alert = new Alert(tipo);
         alert.setTitle(titulo);
